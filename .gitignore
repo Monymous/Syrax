@@ -1,0 +1,12 @@
+#Syrax files
+*.log
+
+#Visual Studio files
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+#Build Results
+x64/
