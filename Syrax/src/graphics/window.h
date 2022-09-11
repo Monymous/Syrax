@@ -11,18 +11,19 @@ namespace syrax{
 
 		class Window {
 		private:
-			long width, height;
+			int width, height;
 			const char *name;
 			GLFWwindow* window;
 
 		public:
-			Window(const char *name, long width, long height);
+			Window(const char *name, int width, int height);
 			~Window();
 			void run();
 
 		private:
-			void update();
+			void clear();
 			void init();
+			void update();
 		};
 
     }

@@ -2,7 +2,7 @@
 
 namespace syrax {
 	namespace graphics {
-		Window::Window(const char* name, long width, long height){
+		Window::Window(const char* name, int width, int height){
 			this->name = name;
 			this->width = width;
 			this->height = height;
@@ -13,6 +13,10 @@ namespace syrax {
 			glfwDestroyWindow(this->window);
 			glfwTerminate();
 			delete this->window;
+		}
+
+		void Window::clear() {
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
 		void Window::init() {
@@ -37,11 +41,15 @@ namespace syrax {
 
 		void Window::update() {
 			glfwPollEvents();
+			glfwGetFramebufferSize(this->window, &width, &height);
+			glViewport(0, 0, this->width, this->height);
 			glfwSwapBuffers(this->window);
 		}
 		
 		void Window::run() {
 			while (!glfwWindowShouldClose(this->window)) {
+				glClearColor(0.2f, 0.3f, 0.8f, 1.0f);
+				this->clear();
 				this->update();
 			}
 		}
