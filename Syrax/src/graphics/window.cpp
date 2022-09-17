@@ -37,6 +37,12 @@ namespace syrax {
 			}
 
 			glfwMakeContextCurrent(this->window);
+
+			if (glewInit() != GLEW_OK) {
+				std::cout << "Failed to init GLEW\n";
+				exit(1);
+			}
+
 		}
 
 		void Window::update() {
