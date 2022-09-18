@@ -37,12 +37,28 @@ namespace syrax {
 			}
 
 			glfwMakeContextCurrent(this->window);
+			this->callback();
 
 			if (glewInit() != GLEW_OK) {
 				std::cout << "Failed to init GLEW\n";
 				exit(1);
 			}
+		}
 
+		void Window::cursor_callback(GLFWwindow* window, double xPos, double yPos) {
+		}
+
+		void Window::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+		}
+
+		void Window::mouse_callback(GLFWwindow* window, int button, int action, int mods) {
+		}
+
+		void Window::callback() {
+			glfwSetKeyCallback(this->window, key_callback);
+			glfwSetCursorPosCallback(this->window, cursor_callback);
+			glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+			glfwSetMouseButtonCallback(this->window, mouse_callback);
 		}
 
 		void Window::update() {

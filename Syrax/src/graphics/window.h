@@ -27,7 +27,11 @@ namespace syrax{
 		private:
 			void clear();
 			void init();
+			void callback();
 			void update();
+			static void cursor_callback(GLFWwindow* window, double xPos, double yPos);
+			static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+			static void mouse_callback(GLFWwindow* window, int button, int action, int mods);
 		};
 
     }
